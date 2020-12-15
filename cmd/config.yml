@@ -1,0 +1,7 @@
+appname: gcp-smtpd
+starttlscert: ../certs/server.crt
+starttlskey: ../certs/server.key
+gcpcredentials: ../certs/gcpServiceAccount.json
+forwardto: claire@example.com
+domains:
+  - example.com

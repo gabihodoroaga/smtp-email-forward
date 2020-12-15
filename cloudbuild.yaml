@@ -1,0 +1,14 @@
+steps:
+- name: golang:1.13
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    # build server
+    env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags="-s" -o dist/smtpd ./cmd
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/smtp-email-forward:${_VERSION_}', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/smtp-email-forward:${_VERSION_}'
+substitutions:
+  _VERSION_: 1.0.0
