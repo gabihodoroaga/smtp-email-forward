@@ -64,4 +64,5 @@ Gabriel Hodoroaga [hodo.dev](https://hodo.dev)
 
 - add support for SPF validation
 - add support for DKIM validation 
-- add support for email list
+- add options to filter the emails addresses
+- add support for Let's encrypt

@@ -35,7 +35,7 @@ func mailHandler(origin net.Addr, from string, to []string, data []byte) {
 	if config.Config.GCPBucket != "" {
 		ctx := context.Background()
 		for _, m := range to {
-			filename, err := storage.UploadFileToGCSBucket(ctx, m, data)
+			filename, err := storage.UploadFileToBucket(ctx, m, data)
 			if err != nil {
 				logger.Log.Errorf("Error saving file %s to gcs: %s", filename, err)
 			} else {

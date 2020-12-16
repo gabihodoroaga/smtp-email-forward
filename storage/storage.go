@@ -21,8 +21,8 @@ var (
 	once   sync.Once
 )
 
-// UploadFileToGCSBucket uploads the email message to GCP bucket, one folder for each mailbox
-func UploadFileToGCSBucket(ctx context.Context, mailbox string, data []byte) (string, error) {
+// UploadFileToBucket uploads the email message to GCP bucket, one folder for each mailbox
+func UploadFileToBucket(ctx context.Context, mailbox string, data []byte) (string, error) {
 	filename := generateFileNameForGCS(ctx, "email")
 	filepath := fmt.Sprintf("%s/%s.eml", mailbox, filename)
 	client, err := getGCSClient(ctx)
