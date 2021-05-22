@@ -11,7 +11,7 @@ This is a simple smtp server that can be hosted in a docker container and be use
 ## Build and run
 
 ```bash
-# clone the respository
+# clone the repository
 git clone https://github.com/gabihodoroaga/smtp-email-forward.git
 # build
 cd cmd

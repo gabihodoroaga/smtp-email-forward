@@ -13,8 +13,8 @@ type args struct {
 	ConfigPath string
 }
 
-// Configutation struct ...
-type Configutation struct {
+// Configuration struct ...
+type Configuration struct {
 	AppName        string   `yaml:"appname" env:"APP_NAME"`
 	Hostname       string   `yaml:"hostname" env:"HOST_NAME"`
 	Domains        []string `yaml:"domains" env:"DOMAINS" env-separator:","`
@@ -29,7 +29,7 @@ type Configutation struct {
 }
 
 // Config is the application configuration
-var Config Configutation
+var Config Configuration
 
 // InitConfig - Initialize the the application configuration
 func InitConfig() {

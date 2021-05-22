@@ -20,7 +20,7 @@ type maigunForwarder struct {
 func initMailGun() {
 	if config.Config.MailgunDomain != "" && config.Config.MailgunAPIKey != "" {
 		logger.Log.Info("Init Mailgun forwarder")
-		forwaders = append(forwaders, &maigunForwarder{
+		forwarders = append(forwarders, &maigunForwarder{
 			Domain: config.Config.MailgunDomain,
 			APIKey: config.Config.MailgunAPIKey,
 			URL: config.Config.MailgunURL,
@@ -45,7 +45,7 @@ func (f maigunForwarder) ForwardEmail(data []byte, recipient string) error {
 		return err
 	}
 
-	logger.Log.Infof("Email sent succesfully to maigun: ID: %s Resp: %s", id, resp)
+	logger.Log.Infof("Email sent successfully to maigun: ID: %s Resp: %s", id, resp)
 
 	return nil
 }

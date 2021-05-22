@@ -7,10 +7,10 @@ import (
 	"github.com/gabihodoroaga/smtpd-email-forward/config"
 )
 
-var forwaders []mailForwarder
+var forwarders []mailForwarder
 
 type mailForwarder interface {
-	ForwardEmail(data []byte, reciptient string) error
+	ForwardEmail(data []byte, recipient string) error
 }
 
 // InitForwarders initialize all the email forwarders
@@ -21,7 +21,7 @@ func InitForwarders() {
 // ForwardEmail forwards the email to all the configured forwarders
 func ForwardEmail(data []byte) error {
 	var errstrings []string
-	for _, f := range forwaders {
+	for _, f := range forwarders {
 		if err := f.ForwardEmail(data, config.Config.ForwardTo); err != nil {
 			errstrings = append(errstrings, err.Error())
 		}
