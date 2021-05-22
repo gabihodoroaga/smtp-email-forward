@@ -11,7 +11,7 @@ import (
 	"github.com/mailgun/mailgun-go/v4"
 )
 
-type maigunForwarder struct {
+type mailgunForwarder struct {
 	Domain string
 	APIKey string
 	URL string
@@ -20,7 +20,7 @@ type maigunForwarder struct {
 func initMailGun() {
 	if config.Config.MailgunDomain != "" && config.Config.MailgunAPIKey != "" {
 		logger.Log.Info("Init Mailgun forwarder")
-		forwarders = append(forwarders, &maigunForwarder{
+		forwarders = append(forwarders, &mailgunForwarder{
 			Domain: config.Config.MailgunDomain,
 			APIKey: config.Config.MailgunAPIKey,
 			URL: config.Config.MailgunURL,
@@ -28,7 +28,7 @@ func initMailGun() {
 	}
 }
 
-func (f maigunForwarder) ForwardEmail(data []byte, recipient string) error {
+func (f mailgunForwarder) ForwardEmail(data []byte, recipient string) error {
 	// create the client
 	mg := mailgun.NewMailgun(f.Domain, f.APIKey)
 	mg.SetAPIBase(f.URL)
@@ -45,7 +45,7 @@ func (f maigunForwarder) ForwardEmail(data []byte, recipient string) error {
 		return err
 	}
 
-	logger.Log.Infof("Email sent successfully to maigun: ID: %s Resp: %s", id, resp)
+	logger.Log.Infof("Email sent successfully to mailgun: ID: %s Resp: %s", id, resp)
 
 	return nil
 }
